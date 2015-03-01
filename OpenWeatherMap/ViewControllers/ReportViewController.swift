@@ -7,20 +7,35 @@
 //
 
 import UIKit
+import MapKit
 
 class ReportViewController: UIViewController {
+    
+    @IBOutlet weak private var tempField: UITextField!
+    @IBOutlet weak private var humidField: UITextField!
+    @IBOutlet weak private var rainField: UITextField!
+    @IBOutlet weak private var locationMap: MKMapView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tempField.attributedPlaceholder = NSAttributedString(string:"Temperature (ºC)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()]);
+        humidField.attributedPlaceholder = NSAttributedString(string:"Soil humidity (kPa)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()]);
+        rainField.attributedPlaceholder = NSAttributedString(string:"Rainfall (mm/m²)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()]);
 
-        // Do any additional setup after loading the view.
+        self.addPadding(tempField);
+        self.addPadding(humidField);
+        self.addPadding(rainField);
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    func addPadding(textField: UITextField) {
+        textField.leftViewMode = UITextFieldViewMode.Always;
+        textField.leftView = UIView(frame:CGRect(x:0, y:0, width:10, height:10));
+    }
 
     /*
     // MARK: - Navigation
