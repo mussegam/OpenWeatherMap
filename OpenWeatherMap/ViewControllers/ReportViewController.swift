@@ -17,16 +17,17 @@ class ReportViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak private var locationMap: MKMapView!
     @IBOutlet weak private var mapWidth: NSLayoutConstraint!
     let locationManager = CLLocationManager();
+    let cartoDB_API = "88a4a6d71419e6fe522a6302c8e9ace7004d8953";
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tempField.attributedPlaceholder = NSAttributedString(string:"Temperature (ºC)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        rainField.attributedPlaceholder = NSAttributedString(string:"Air humidity (%)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         humidField.attributedPlaceholder = NSAttributedString(string:"Soil humidity (%)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        rainField.attributedPlaceholder = NSAttributedString(string:"Rainfall (mm/m²)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 
         self.addPadding(tempField)
-        self.addPadding(humidField)
         self.addPadding(rainField)
+        self.addPadding(humidField)
         
         let toolbarTemp = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 44))
         let toolbarRain = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 44))
