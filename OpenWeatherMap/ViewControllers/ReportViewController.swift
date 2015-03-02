@@ -15,6 +15,7 @@ class ReportViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak private var humidField: UITextField!
     @IBOutlet weak private var rainField: UITextField!
     @IBOutlet weak private var locationMap: MKMapView!
+    @IBOutlet weak private var mapWidth: NSLayoutConstraint!
     let locationManager = CLLocationManager();
     
     override func viewDidLoad() {
@@ -51,6 +52,8 @@ class ReportViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
+        
+        mapWidth.constant = UIScreen.mainScreen().bounds.width - 40
     }
 
     override func didReceiveMemoryWarning() {
