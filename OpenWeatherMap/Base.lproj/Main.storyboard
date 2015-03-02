@@ -55,7 +55,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Temperature (ºC)" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CNP-J4-XsN">
-                                <rect key="frame" x="20" y="88" width="150" height="40"/>
+                                <rect key="frame" x="20" y="108" width="150" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Fsb-JU-bug"/>
@@ -66,7 +66,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Rainfall (mm/m²)" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jpo-f4-ejo">
-                                <rect key="frame" x="20" y="148" width="150" height="40"/>
+                                <rect key="frame" x="20" y="168" width="150" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ZJ5-yM-jvE"/>
@@ -77,7 +77,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Soil humidity (kPa)" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KX5-fo-cgh">
-                                <rect key="frame" x="20" y="208" width="150" height="40"/>
+                                <rect key="frame" x="20" y="228" width="150" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ARz-NK-dXd"/>
@@ -88,7 +88,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qiv-Mn-KQp">
-                                <rect key="frame" x="190" y="88" width="390" height="160"/>
+                                <rect key="frame" x="190" y="108" width="390" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="afz-fo-QPX"/>
                                 </constraints>
@@ -105,9 +105,12 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendReport" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Yj3-F8-gca"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0039215686274509803" green="0.45882352941176469" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KX5-fo-cgh" firstAttribute="top" secondItem="jpo-f4-ejo" secondAttribute="bottom" constant="20" id="3iQ-Wv-aio"/>
                             <constraint firstAttribute="trailing" secondItem="Qiv-Mn-KQp" secondAttribute="trailing" constant="20" id="4Xk-t4-6NP"/>
@@ -125,8 +128,8 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                             <constraint firstItem="xPV-Se-93Z" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="20" id="rA8-yx-D0L"/>
                             <constraint firstItem="Qiv-Mn-KQp" firstAttribute="leading" secondItem="KX5-fo-cgh" secondAttribute="trailing" constant="20" id="s0N-1I-ITT"/>
-                            <constraint firstItem="Qiv-Mn-KQp" firstAttribute="top" secondItem="xPV-Se-93Z" secondAttribute="bottom" constant="20" id="skg-00-OXr"/>
-                            <constraint firstItem="CNP-J4-XsN" firstAttribute="top" secondItem="xPV-Se-93Z" secondAttribute="bottom" constant="20" id="vbU-R2-wyw"/>
+                            <constraint firstItem="Qiv-Mn-KQp" firstAttribute="top" secondItem="xPV-Se-93Z" secondAttribute="bottom" constant="40" id="skg-00-OXr"/>
+                            <constraint firstItem="CNP-J4-XsN" firstAttribute="top" secondItem="xPV-Se-93Z" secondAttribute="bottom" constant="40" id="vbU-R2-wyw"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -150,7 +153,7 @@
         <!--Map-->
         <scene sceneID="8Rg-el-XgD">
             <objects>
-                <viewController id="fbb-bD-F97" sceneMemberID="viewController">
+                <viewController id="fbb-bD-F97" customClass="MapViewController" customModule="OpenWeatherMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EDU-kr-jlu"/>
                         <viewControllerLayoutGuide type="bottom" id="wXq-a9-xjt"/>
@@ -177,7 +180,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="fbb-bD-F97" kind="relationship" relationship="viewControllers" id="8HF-cj-DDa"/>
                     </connections>
