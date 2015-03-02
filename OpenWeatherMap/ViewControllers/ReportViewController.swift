@@ -119,7 +119,9 @@ class ReportViewController: UIViewController, CLLocationManagerDelegate {
         var locationArray = locations as NSArray
         var locationObj = locationArray.lastObject as! CLLocation
         var coord = locationObj.coordinate
-        println(coord.latitude)
-        println(coord.longitude)
+        locationMap.setRegion(MKCoordinateRegionMake(coord, MKCoordinateSpanMake(0.01, 0.01)), animated: true)
+        if (locationObj.horizontalAccuracy < 50) {
+            locationManager.stopUpdatingLocation()
+        }
     }
 }
