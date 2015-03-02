@@ -62,7 +62,7 @@ class ReportViewController: UIViewController, CLLocationManagerDelegate {
         let humidity = (humidField.text as NSString).floatValue
         let rainfall = (rainField.text as NSString).floatValue
         
-        let urlString = "http://ygneo.cartodb.com/api/v2/sql?q=UPDATE iot_demo_1 SET temperatur=\(temp), humidity=\(humidity), rainfall=\(rainfall) WHERE cartodb_id=5926&id_rec=25061:0:0:7:127:1&api_key=\(cartoDB_API)"
+        let urlString = "http://ygneo.cartodb.com/api/v2/sql?q=UPDATE iot_demo_1 SET temperatur=\(temp), humidity=\(humidity), rainfall=\(rainfall) WHERE id_rec='25061:0:0:7:127:1'&api_key=\(cartoDB_API)"
         let url = NSURL(string: urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!);
         let request = NSURLRequest(URL: url!);
         
