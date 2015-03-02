@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import WebKit
 
 class MapViewController: UIViewController {
-
+    
+    private var webView: WKWebView?;
+    
+    override func loadView() {
+        self.webView = WKWebView()
+        
+        //self.webView!.navigationDelegate = self
+        self.view = self.webView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let url = NSURL(string: "http://openweathermap.agroptima.com/")
+        let request = NSURLRequest(URL: url!)
+        self.webView!.loadRequest(request)
     }
 
     override func didReceiveMemoryWarning() {
