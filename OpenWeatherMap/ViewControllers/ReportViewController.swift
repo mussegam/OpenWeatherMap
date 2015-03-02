@@ -9,14 +9,14 @@
 import UIKit
 import MapKit
 
-class ReportViewController: UIViewController {
+class ReportViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak private var tempField: UITextField!
     @IBOutlet weak private var humidField: UITextField!
     @IBOutlet weak private var rainField: UITextField!
     @IBOutlet weak private var locationMap: MKMapView!
+    let locationManager = CLLocationManager();
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tempField.attributedPlaceholder = NSAttributedString(string:"Temperature (ºC)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
@@ -36,6 +36,13 @@ class ReportViewController: UIViewController {
         tempField.inputAccessoryView = toolbar
         humidField.inputAccessoryView = toolbar
         rainField.inputAccessoryView = toolbar
+        
+        if (CLLocationManager.locationServicesEnabled()) {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,5 +58,18 @@ class ReportViewController: UIViewController {
         self.view.endEditing(true);
     }
     
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        locationManager.stopUpdatingLocation()
+        if ((error) != nil) {
+            print(error)
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        var locationArray = locations as NSArray
+        var locationObj = locationArray.lastObject as! CLLocation
+        var coord = locationObj.coordinate
+        println(coord.latitude)
+        println(coord.longitude)
     }
 }
