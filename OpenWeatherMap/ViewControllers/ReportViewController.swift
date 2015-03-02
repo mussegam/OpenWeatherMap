@@ -27,15 +27,23 @@ class ReportViewController: UIViewController, CLLocationManagerDelegate {
         self.addPadding(humidField)
         self.addPadding(rainField)
         
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 44))
+        let toolbarTemp = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 44))
+        let toolbarRain = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 44))
+        let toolbarHumid = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 44))
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.FlexibleSpace, target:nil, action:nil)
-        let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.Done, target:self, action: "dismissKeyboard:");
-        toolbar.items = [flexSpace, doneButton]
+
+        let toRainButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "toRainfall")
+        let toHumidButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target:self, action: "toHumidity")
+        let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.Done, target:self, action: "dismissKeyboard")
         
-        tempField.inputAccessoryView = toolbar
-        humidField.inputAccessoryView = toolbar
-        rainField.inputAccessoryView = toolbar
+        toolbarTemp.items = [flexSpace, toRainButton]
+        toolbarRain.items = [flexSpace, toHumidButton]
+        toolbarHumid.items = [flexSpace, doneButton]
+        
+        tempField.inputAccessoryView = toolbarTemp
+        rainField.inputAccessoryView = toolbarRain
+        humidField.inputAccessoryView = toolbarHumid
         
         if (CLLocationManager.locationServicesEnabled()) {
             locationManager.delegate = self
@@ -85,9 +93,20 @@ class ReportViewController: UIViewController, CLLocationManagerDelegate {
         textField.leftView = UIView(frame:CGRect(x:0, y:0, width:10, height:10));
     }
     
-    func dismissKeyboard(sender: UIControl) {
-        self.view.endEditing(true);
+    func toRainfall() {
+        rainField.becomeFirstResponder()
     }
+    
+    func toHumidity() {
+        humidField.becomeFirstResponder()
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true);
+        self.sendReport()
+    }
+    
+    // MARK: Location manager delegate
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         locationManager.stopUpdatingLocation()
