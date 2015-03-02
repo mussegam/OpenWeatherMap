@@ -9,19 +9,25 @@
 import UIKit
 import WebKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, WKNavigationDelegate {
     
     private var webView: WKWebView?;
+    @IBOutlet weak private var loadingView: UIView!;
     
     override func loadView() {
         self.webView = WKWebView()
-        
-        //self.webView!.navigationDelegate = self
+        self.webView!.navigationDelegate = self
         self.view = self.webView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(self.loadingView);
+        view.addConstraint(NSLayoutConstraint(item: loadingView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0));
+        view.addConstraint(NSLayoutConstraint(item: loadingView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0));
+        
+        self.loadingView.layer.cornerRadius = 4;
         
         let url = NSURL(string: "http://openweathermap.agroptima.com/")
         let request = NSURLRequest(URL: url!)
@@ -33,15 +39,8 @@ class MapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        loadingView.hidden = true;
     }
-    */
 
 }
