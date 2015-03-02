@@ -55,69 +55,77 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Temperature (ºC)" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CNP-J4-XsN">
-                                <rect key="frame" x="20" y="88" width="200" height="40"/>
+                                <rect key="frame" x="20" y="88" width="150" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Fsb-JU-bug"/>
-                                    <constraint firstAttribute="width" constant="200" id="KlR-BC-XL5"/>
+                                    <constraint firstAttribute="width" constant="150" id="KlR-BC-XL5"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Rainfall (mm/m²)" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jpo-f4-ejo">
-                                <rect key="frame" x="20" y="138" width="200" height="40"/>
+                                <rect key="frame" x="20" y="148" width="150" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="ZJ5-yM-jvE"/>
+                                    <constraint firstAttribute="width" constant="150" id="ZJ5-yM-jvE"/>
                                     <constraint firstAttribute="height" constant="40" id="apo-4b-NZS"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Soil humidity (kPa)" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KX5-fo-cgh">
-                                <rect key="frame" x="20" y="188" width="200" height="40"/>
+                                <rect key="frame" x="20" y="208" width="150" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="ARz-NK-dXd"/>
+                                    <constraint firstAttribute="width" constant="150" id="ARz-NK-dXd"/>
                                     <constraint firstAttribute="height" constant="40" id="GnM-ZU-uNu"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svr-15-Lza">
-                                <rect key="frame" x="20" y="248" width="560" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qiv-Mn-KQp">
-                                <rect key="frame" x="20" y="279" width="560" height="252"/>
+                                <rect key="frame" x="190" y="88" width="390" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="afz-fo-QPX"/>
+                                </constraints>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEX-cw-jgM">
+                                <rect key="frame" x="200" y="486" width="200" height="45"/>
+                                <color key="backgroundColor" red="0.10980392156862745" green="0.72156862745098038" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="qrm-eL-n1S"/>
+                                    <constraint firstAttribute="height" constant="45" id="z0M-uY-Sx4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Send report">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686274509803" green="0.45882352941176469" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Qiv-Mn-KQp" secondAttribute="trailing" constant="20" id="0oY-ga-U7e"/>
-                            <constraint firstItem="KX5-fo-cgh" firstAttribute="top" secondItem="jpo-f4-ejo" secondAttribute="bottom" constant="10" id="3iQ-Wv-aio"/>
-                            <constraint firstItem="svr-15-Lza" firstAttribute="top" secondItem="KX5-fo-cgh" secondAttribute="bottom" constant="20" id="9hc-7r-5if"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Qiv-Mn-KQp" secondAttribute="bottom" constant="20" id="Brz-xX-qXX"/>
+                            <constraint firstItem="KX5-fo-cgh" firstAttribute="top" secondItem="jpo-f4-ejo" secondAttribute="bottom" constant="20" id="3iQ-Wv-aio"/>
+                            <constraint firstAttribute="trailing" secondItem="Qiv-Mn-KQp" secondAttribute="trailing" constant="20" id="4Xk-t4-6NP"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
                             <constraint firstItem="xPV-Se-93Z" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="Ebu-7v-4FJ"/>
-                            <constraint firstItem="Qiv-Mn-KQp" firstAttribute="top" secondItem="svr-15-Lza" secondAttribute="bottom" constant="10" id="JCM-N4-Aat"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
                             <constraint firstAttribute="trailing" secondItem="xPV-Se-93Z" secondAttribute="trailing" constant="20" id="NBP-Zg-nun"/>
                             <constraint firstItem="KX5-fo-cgh" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="PU2-LK-unj"/>
-                            <constraint firstItem="svr-15-Lza" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="VPr-xa-lht"/>
-                            <constraint firstAttribute="trailing" secondItem="svr-15-Lza" secondAttribute="trailing" constant="20" id="Xvg-SS-KO7"/>
                             <constraint firstItem="jpo-f4-ejo" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="aQC-PW-ibp"/>
-                            <constraint firstItem="Qiv-Mn-KQp" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="mCs-XP-Wky"/>
+                            <constraint firstAttribute="centerX" secondItem="uEX-cw-jgM" secondAttribute="centerX" id="eI0-dY-2ea"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="uEX-cw-jgM" secondAttribute="bottom" constant="20" id="fKF-iy-ne2"/>
                             <constraint firstItem="CNP-J4-XsN" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="ngx-xH-VCC"/>
-                            <constraint firstItem="jpo-f4-ejo" firstAttribute="top" secondItem="CNP-J4-XsN" secondAttribute="bottom" constant="10" id="qc9-mc-d0L"/>
+                            <constraint firstItem="jpo-f4-ejo" firstAttribute="top" secondItem="CNP-J4-XsN" secondAttribute="bottom" constant="20" id="qc9-mc-d0L"/>
                             <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                             <constraint firstItem="xPV-Se-93Z" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="20" id="rA8-yx-D0L"/>
+                            <constraint firstItem="Qiv-Mn-KQp" firstAttribute="leading" secondItem="KX5-fo-cgh" secondAttribute="trailing" constant="20" id="s0N-1I-ITT"/>
+                            <constraint firstItem="Qiv-Mn-KQp" firstAttribute="top" secondItem="xPV-Se-93Z" secondAttribute="bottom" constant="20" id="skg-00-OXr"/>
                             <constraint firstItem="CNP-J4-XsN" firstAttribute="top" secondItem="xPV-Se-93Z" secondAttribute="bottom" constant="20" id="vbU-R2-wyw"/>
                         </constraints>
                         <variation key="default">

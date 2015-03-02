@@ -19,13 +19,23 @@ class ReportViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tempField.attributedPlaceholder = NSAttributedString(string:"Temperature (ºC)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()]);
-        humidField.attributedPlaceholder = NSAttributedString(string:"Soil humidity (kPa)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()]);
-        rainField.attributedPlaceholder = NSAttributedString(string:"Rainfall (mm/m²)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()]);
+        tempField.attributedPlaceholder = NSAttributedString(string:"Temperature (ºC)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        humidField.attributedPlaceholder = NSAttributedString(string:"Soil humidity (%)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        rainField.attributedPlaceholder = NSAttributedString(string:"Rainfall (mm/m²)", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 
-        self.addPadding(tempField);
-        self.addPadding(humidField);
-        self.addPadding(rainField);
+        self.addPadding(tempField)
+        self.addPadding(humidField)
+        self.addPadding(rainField)
+        
+        let toolbar = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 44))
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.FlexibleSpace, target:nil, action:nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.Done, target:self, action: "dismissKeyboard:");
+        toolbar.items = [flexSpace, doneButton]
+        
+        tempField.inputAccessoryView = toolbar
+        humidField.inputAccessoryView = toolbar
+        rainField.inputAccessoryView = toolbar
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,15 +46,10 @@ class ReportViewController: UIViewController {
         textField.leftViewMode = UITextFieldViewMode.Always;
         textField.leftView = UIView(frame:CGRect(x:0, y:0, width:10, height:10));
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func dismissKeyboard(sender: UIControl) {
+        self.view.endEditing(true);
     }
-    */
-
+    
+    }
 }
