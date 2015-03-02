@@ -49,7 +49,38 @@ class ReportViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func addPadding(textField: UITextField) {
+    @IBAction func sendReport() {
+        let temp = (tempField.text as NSString).floatValue
+        let humidity = (humidField.text as NSString).floatValue
+        let rainfall = (rainField.text as NSString).floatValue
+        
+        let urlString = "http://ygneo.cartodb.com/api/v2/sql?q=UPDATE iot_demo_1 SET temperatur=\(temp), humidity=\(humidity), rainfall=\(rainfall) WHERE cartodb_id=5926&id_rec=25061:0:0:7:127:1&api_key=\(cartoDB_API)"
+        let url = NSURL(string: urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!);
+        let request = NSURLRequest(URL: url!);
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
+            (response: NSURLResponse!, data:NSData!, error:NSError!) -> Void in
+            
+            var title = "Report sent"
+            var message = "Your weather report was sent successfully!"
+            let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) -> Void in
+            })
+            
+            if let anError = error {
+                title = "Error sending report"
+                message = "There was an error sending your weather report. Please, try again in a few minutes";
+            }
+
+            var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert);
+            alert.addAction(action);
+            [self .presentViewController(alert, animated: true, completion: { () -> Void in
+            })];
+        }
+    }
+    
+    // MARK: Private methods
+    
+    private func addPadding(textField: UITextField) {
         textField.leftViewMode = UITextFieldViewMode.Always;
         textField.leftView = UIView(frame:CGRect(x:0, y:0, width:10, height:10));
     }
